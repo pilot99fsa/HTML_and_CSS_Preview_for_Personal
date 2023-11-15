@@ -1,0 +1,44 @@
+.parent {
+  color: blue;
+}
+//この時点では.parent配下の子要素および孫要素の文字色も全て青色になる
+
+.element {
+  color: red;
+}
+//ここでelementのクラス名がついた要素の文字色は赤色になる
+
+.child {
+  color: purple;
+}
+//elementと名付けられたクラス名にchildを追加したが、そこを指定して紫色にした。これでchildの名がついたクラスのみ紫色になる
+
+.parent {
+  color: blue;
+
+  & > .element {
+    color: purple;
+    &.second-child {
+      color: black;
+    } //CSSファイルの19行目にコンパイル内容が記述されている
+  }
+}
+
+// これも同じように、Parentの子要素であるelementのみ文字色を変えられる
+// CSSファイルの16〜18行を見ると分かりやすい
+
+.parent {
+  color: blue;
+  //   & .element {
+  //     color: purple;
+  //   }
+}
+// この記述だと、parentの子要素のみでなく、孫要素の色も紫色になる
+
+.second-child {
+  color: black;
+}
+// parentの子要素の内の一つにクラス名を付け加えて、色を指定したが効いていない。
+// 原因は詳細度の違いによるものである
+// 単一のクラス名で指定するより、複数のクラスで指定した方が詳細度が上がる
+// だから15〜22行目の色指定が優先される訳である

@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #0f0f0f;
+  height: 100vh;
+  color: white;
+  display: flex;
+  overflow: hidden; //はみ出た部分を隠す
+
+  & > .sidebar {
+    width: 80px;
+    height: 100%;
+    padding: 16px 0;
+    display: flex;
+    flex-direction: column; // flexで並べられた要素を縦に積む
+    align-items: center;
+    gap: 16px; //display:flexに設定した際の子要素同士の間
+
+    & > .menu-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 8px;
+      cursor: pointer;
+      border-radius: 50%;
+      &:hover {
+        background-color: #272727;
+      }
+    }
+
+    & > .sidebar-items {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch; //親要素の高さに合わせて子要素の高さを伸縮する指定
+      & > .item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 16px 2px;
+        border-radius: 8px;
+        cursor: pointer;
+        &:hover {
+          background-color: #272727;
+        }
+        & img {
+          width: 24px;
+          height: 24px;
+          margin-bottom: 6px;
+        }
+        & span {
+          font-size: 11px;
+        }
+      }
+    }
+  }
+
+  #menu {
+    width: 240px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(
+      -100%
+    ); //初期状態では画面からはみ出しておく(要は隠しておく)
+    transition: transform 0.5s ease; //動くスピード
+    z-index: 10; //メニューボタンを押して表示した時に最前面にする
+
+    &.visible {
+      // HTMLにはこのクラスは記述していないが、JSでこのクラスを#menuにトグルする
+      transform: translateX(0);
+    }
+
+    & > .menu-header {
+      display: flex;
+      align-items: center;
+      padding-left: 6px;
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+
+    & > .menu-group {
+      padding: 16px 0;
+      border-block: 1px solid #3f3f3f;
+      & > .menu-item {
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        padding: 10px 12px;
+        border-radius: 10px;
+        cursor: pointer;
+        &:hover {
+          background-color: #272727;
+        }
+        & img {
+          margin-right: 24px;
+        }
+      }
+    }
+  }
+
+  section {
+    width: 100%;
+    height: 100%;
+    & > nav {
+      width: 100%;
+      height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 16px;
+    }
+  }
+
+  main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    & > h1 {
+      font-size: 42px;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+.rect {
+  width: 100px; ////縦の大きさ
+  height: 100px; //縦の大きさ
+  // 横と縦の大きさが100pxの正方形
+  margin: 0 auto; // ブロック要素に対して左右中央揃え
+  //.rectはdiv要素に対してクラス名を振っている。divはブロック要素なので左右ちゅ王揃えにする場合はmsrgin 0 auto
+  // margin: 0 autoは、widthとセットで用意すること(ド忘れしがちな点)
+  background-color: orangered;
+  //
+  //ここからtransformプロパティ
+  //
+  //X軸とY軸の方向への移動
+  transform: translate(
+    50px,
+    100px
+  ); //x軸方向(第1引数)とy軸方向(第2引数)にそれぞれ50pxずつ移動させる
+  //もちろん-(マイナス)をつけることもできる
+  // px以外の単位もつけられる。第1引数に100%を付与すると、x軸方向に要素一個分移動する(width100pxなのでその分動く)
+  //
+  // 回転
+  transform: rotate(30deg); //右方向(時計回りに)に30°回転
+  transform-origin: top left; //物体の元の位置から見て、左上を軸に回転する
+  transform-origin: center center; //物体の元の位置から見て、左右上下中央を軸に回転する
+  transform-origin: 20px 20px; //回転させたい物体の左上をスタート地点として、数値分移動した位置に回転軸を決めることができる
+  //この場合は左上からx軸方向に20px、y軸方向に20pxの位置が回転軸になる
+  transform-origin: center center;
+  //
+  //平行四辺形(あるいは菱形)にするプロパティ
+  transform: skew(
+    -30deg,
+    -30deg
+  ); //第1引数はx軸方向、第2引数はy軸方向に物体を引っ張るような形で変形させる
+  //
+  //大きさ(倍率)を変えるプロパティ
+  transform: scale(2, 1.1); //第1引数はx軸方向、第2引数はy軸のサイズを変える、
+  //横に2倍、縦に1.1倍
+}

@@ -1,0 +1,14 @@
+.rect {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  background-color: orangered;
+  transform: translate(50px, 100px);
+  transform: rotate(30deg);
+  transform-origin: top left;
+  transform-origin: center center;
+  transform-origin: 20px 20px;
+  transform-origin: center center;
+  transform: skew(-30deg, -30deg);
+  transform: scale(2, 1.1);
+}/*# sourceMappingURL=style.css.map */

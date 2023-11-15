@@ -1,0 +1,39 @@
+// SCSSでは変数を設定できる
+$cWhite: white;
+$cBlack: black;
+//もし仮にこの変数を使ったプロパティを全て変更したい場合、ここで設定した変数を使っていると、ここを変えることで全て一気に変えることができる
+
+#container {
+  text-align: center;
+  // 以下のように書くと、#container .btn {} と同じ意味である
+  // これをブロックを分けて書くのではなく、ブロックの中に入れ子にして書いていく
+  & .btn {
+    background-color: $cWhite;
+    color: $cBlack;
+    border: 1px solid $cBlack;
+    padding: 10px 40px 10px 40px;
+    padding: 10px 40px;
+    margin: 50px 0;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    // ここでbtnの{}の中に、CSSでは外に書いた.btn:hoverを内側に記述する
+
+    // &は.btnに変換されてCSSにコンパイルする
+    &:hover {
+      background-color: $cBlack;
+      color: $cWhite;
+    }
+    // 以下のように&の後に続けて文字列を書くと、クラスを生成できる
+    // &は親のクラス名、つまり.btn-cubeが生成される
+    &-cube {
+      background-color: $cWhite;
+      //&に半角スペースを開けて.クラス名で子要素を作れる
+      // .btn-cubeの子要素、.innerということ
+      & .inner {
+        background-color: $cWhite;
+      }
+    }
+  }
+}
