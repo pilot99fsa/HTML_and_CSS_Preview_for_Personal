@@ -1,0 +1,35 @@
+h1 {
+  color: #0f4;
+  color: #fff;
+  mix-blend-mode: difference;
+}
+
+body {
+  width: 100svw;
+  height: 100svh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: grid;
+  place-items: center;
+  width: 50%;
+  height: 50%;
+  padding: 0 0 1rem;
+  border: solid 1px #000000;
+  background-color: #fff;
+  position: relative;
+}
+
+.container::before {
+  content: "";
+  display: block;
+  width: 50%;
+  height: 100%;
+  background-color: #000000;
+  position: absolute;
+  inset: 0 0 auto auto;
+  background-size: cover;
+}/*# sourceMappingURL=style.css.map */
