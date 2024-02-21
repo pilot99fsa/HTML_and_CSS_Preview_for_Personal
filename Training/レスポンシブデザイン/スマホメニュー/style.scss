@@ -1,5 +1,93 @@
-$cBlack: black;
 $cWhite: white;
+$cBlack: black;
+$cMenuClose: $cBlack;
+$cMenuOpen: $cBlack;
+$cSubTitle: #535353;
+
+body {
+  margin: 0;
+}
+
+#container {
+  position: relative;
+  background-color: teal;
+  height: 100vh;
+  z-index: 2; // モバイルメニューとの位置関係の都合上、設定する(設定しないと重なってしまう)
+  transition: all 0.5s; // ハンバーガーボタンを押した際の挙動をなめらかにする
+
+  & > header {
+    background-color: $cWhite;
+    height: 100px;
+    display: flex;
+    justify-content: flex-end; // 要素を右端に配置する
+    align-items: center; // 上下中央に配置する
+  }
+}
+
+// ハンバーガーボタンをクリックされたら表示されるモバイル用のメニュー
+.menu-open {
+  & #container {
+    transform: translate(-300px, 60px);
+    box-shadow: 0 8px 40px -10px rgba(0, 0, 0, 0.8);
+    // x軸方向に0、y軸方向に8px、ブラーを40px、スプレッドを-10px。色を透明度0.8の黒
+  }
+}
+
+.mobile-menu {
+  position: fixed;
+  right: 0;
+  top: 60px;
+
+  // BEM(Block Element Modifire)記法で書いていく
+  &__main {
+    padding: 0;
+    perspective: 2000px; // 2000px先に仮想的な視点を設定する。
+    // MDNより。 z=0 の平面とユーザーとの間の距離を定めて 3D に配置された要素に遠近感を与えます。
+    transform-style: preserve-3d; // 要素の子要素を 3D 空間に配置することを示す。
+    // 上記二つは3D表現に必須のCSSである。覚えておこう
+  }
+  // & > .mobile-menu__main {
+  //   padding: 0;
+  // }
+  // 結果的にはこの記法と同じになる
+  &__item {
+    list-style: none; // liタグの要素につく先頭の黒丸を打ち消す
+    display: block;
+    transform: translate3d(0, 0, -1000px); // 第3引数はz軸の距離である
+    padding: 0 40px;
+    transition: transform 0.3s, opacity 0.2s; // 0.3秒かけて変化し。0.2秒かけて指定した透明度に変化する(透明度の指定は別で行う)
+    // opacity: 0;
+  }
+
+  &__link {
+    display: block;
+    margin-top: 30px;
+    color: $cBlack;
+    text-decoration: none;
+  }
+
+  // & > .main-title {
+  //   font-weight: 600;
+  //   font-size: 25px;
+  // }
+
+  // & > .main-title {
+  //   display: block;
+  //   font-size: 14px;
+  //   color: #535353;
+  // }
+
+  .main-title {
+    font-weight: 600;
+    font-size: 25px;
+  }
+
+  .sub-title {
+    display: block;
+    font-size: 14px;
+    color: $cSubTitle;
+  }
+}
 
 .mobile-menu__btn {
   background-color: unset;
@@ -8,7 +96,7 @@ $cWhite: white;
   cursor: pointer;
 
   & > span {
-    background-color: $cBlack;
+    background-color: $cMenuClose;
     width: 35px;
     height: 2px;
     display: block;
@@ -22,11 +110,9 @@ $cWhite: white;
 }
 
 .menu-open {
-  background-color: $cBlack;
-
   & .mobile-menu__btn {
     & > span {
-      background-color: $cWhite;
+      background-color: $cMenuOpen;
 
       &:nth-child(1) {
         transition-delay: 70ms;
