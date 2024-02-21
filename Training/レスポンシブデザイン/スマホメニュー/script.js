@@ -9,8 +9,11 @@ class MobileMenu {
 
 
   _getEventType() {
-    return window.ontouchstart ? 'touchstart' : 'click' // ブラウザにontotchstart(というプロパティ)が存在したら'_addEventはスマホでのタッチに動作が最適化される'
-    // 要修正 2024/2/21 16:00
+    const isTouchCapable = "ontouchstart" in window ||
+      (window.DocumentTouch && document instanceof DocumentTouch);
+
+    return isTouchCapable ? "touchstart" : "click"; // ブラウザにontotchstart(というプロパティ)が存在したら'_addEventはスマホでのタッチに動作が最適化される'
+
   }
 
   _toggle() {
