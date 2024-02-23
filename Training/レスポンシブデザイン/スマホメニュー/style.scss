@@ -24,15 +24,6 @@ body {
   }
 }
 
-// ハンバーガーボタンをクリックされたら表示されるモバイル用のメニュー
-.menu-open {
-  & #container {
-    transform: translate(-300px, 60px);
-    box-shadow: 0 8px 40px -10px rgba(0, 0, 0, 0.8);
-    // x軸方向に0、y軸方向に8px、ブラーを40px、スプレッドを-10px。色を透明度0.8の黒
-  }
-}
-
 .mobile-menu {
   position: fixed;
   right: 0;
@@ -56,7 +47,7 @@ body {
     transform: translate3d(0, 0, -1000px); // 第3引数はz軸の距離である
     padding: 0 40px;
     transition: transform 0.3s, opacity 0.2s; // 0.3秒かけて変化し。0.2秒かけて指定した透明度に変化する(透明度の指定は別で行う)
-    // opacity: 0;
+    opacity: 0;
   }
 
   &__link {
@@ -109,23 +100,36 @@ body {
   }
 }
 
+// ハンバーガーボタンをクリックされたら表示されるモバイル用のメニュー
 .menu-open {
-  & .mobile-menu__btn {
-    & > span {
-      background-color: $cMenuOpen;
+  & #container {
+    transform: translate(-300px, 60px);
+    box-shadow: 0 8px 40px -10px rgba(0, 0, 0, 0.8);
+    // x軸方向に0、y軸方向に8px、ブラーを40px、スプレッドを-10px。色を透明度0.8の黒
+  }
+  & .mobile-menu {
+    &__item {
+      transform: none;
+      opacity: 1;
+    }
+  }
+}
 
-      &:nth-child(1) {
-        transition-delay: 70ms;
-        transform: translateY(11px) rotate(135deg);
-      }
-      &:nth-child(2) {
-        transition-delay: 0s;
-        transform: translateX(-18px) scaleX(0);
-      }
-      &:nth-child(3) {
-        transition-delay: 140ms;
-        transform: translateY(-11px) rotate(-135deg);
-      }
+& .mobile-menu__btn {
+  & > span {
+    background-color: $cMenuOpen;
+
+    &:nth-child(1) {
+      transition-delay: 70ms;
+      transform: translateY(11px) rotate(135deg);
+    }
+    &:nth-child(2) {
+      transition-delay: 0s;
+      transform: translateX(-18px) scaleX(0);
+    }
+    &:nth-child(3) {
+      transition-delay: 140ms;
+      transform: translateY(-11px) rotate(-135deg);
     }
   }
 }
