@@ -23,6 +23,7 @@ class MobileMenu {
 
   _addEvent() {
     this.DOM.btn.addEventListener('click', this._toggle.bind(this)) // bindメソッドでthisを束縛する
+    this.DOM.cover.addEventListener('click', this._toggle.bind(this)) // メニューボタンのみでなく、カバーに覆われたコンテンツをクリックしてもメニューを閉じる
   }
 }
 new MobileMenu();
