@@ -51,6 +51,7 @@ body {
     // opacity:0は透明にするだけで存在そのものは消せない
     // visibilityはアニメーションには使えない
     transition: opacity 1s;
+    cursor: pointer;
   }
 
   // BEM(Block Element Modifire)記法で書いていく
@@ -147,22 +148,22 @@ body {
         }
       }
     }
-  }
-  & .mobile-menu__btn {
-    & > span {
-      background-color: $cMenuOpen;
+    &__btn {
+      & > span {
+        background-color: $cMenuOpen;
 
-      &:nth-child(1) {
-        transition-delay: 70ms;
-        transform: translateY(11px) rotate(135deg);
-      }
-      &:nth-child(2) {
-        transition-delay: 0s;
-        transform: translateX(-18px) scaleX(0);
-      }
-      &:nth-child(3) {
-        transition-delay: 140ms;
-        transform: translateY(-11px) rotate(-135deg);
+        &:nth-child(1) {
+          transition-delay: 70ms;
+          transform: translateY(11px) rotate(135deg);
+        }
+        &:nth-child(2) {
+          transition-delay: 0s;
+          transform: translateX(-18px) scaleX(0);
+        }
+        &:nth-child(3) {
+          transition-delay: 140ms;
+          transform: translateY(-11px) rotate(-135deg);
+        }
       }
     }
   }
