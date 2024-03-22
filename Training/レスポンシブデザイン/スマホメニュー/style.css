@@ -28,6 +28,23 @@ body {
   top: 60px;
   width: 300px;
 }
+.mobile-menu__btn {
+  background-color: unset;
+  border: none;
+  outline: none !important;
+  cursor: pointer;
+}
+.mobile-menu__btn > span {
+  background-color: black;
+  width: 35px;
+  height: 2px;
+  display: block;
+  margin-bottom: 9px;
+  transition: transform 0.7s;
+}
+.mobile-menu__btn > span:last-child {
+  margin-bottom: 0;
+}
 .mobile-menu__cover {
   position: absolute;
   top: 0;
@@ -58,41 +75,6 @@ body {
   margin-top: 30px;
   color: black;
   text-decoration: none;
-}
-.mobile-menu .main-title {
-  font-weight: 600;
-  font-size: 25px;
-}
-.mobile-menu .sub-title {
-  display: block;
-  font-size: 14px;
-  color: #535353;
-}
-.mobile-menu .main-title {
-  font-weight: 600;
-  font-size: 25px;
-}
-.mobile-menu .sub-title {
-  display: block;
-  font-size: 14px;
-}
-
-.mobile-menu__btn {
-  background-color: unset;
-  border: none;
-  outline: none !important;
-  cursor: pointer;
-}
-.mobile-menu__btn > span {
-  background-color: black;
-  width: 35px;
-  height: 2px;
-  display: block;
-  margin-bottom: 9px;
-  transition: transform 0.7s;
-}
-.mobile-menu__btn > span:last-child {
-  margin-bottom: 0;
 }
 
 .menu-open #container {
@@ -136,4 +118,15 @@ body {
 .menu-open .mobile-menu__btn > span:nth-child(3) {
   transition-delay: 140ms;
   transform: translateY(-11px) rotate(-135deg);
+}
+
+.main-title {
+  font-weight: 600;
+  font-size: 25px;
+}
+
+.sub-title {
+  display: block;
+  font-size: 14px;
+  color: #535353;
 }/*# sourceMappingURL=style.css.map */
